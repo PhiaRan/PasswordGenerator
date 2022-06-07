@@ -1,51 +1,76 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var password = document.querySelector("#password");
 
+var Numbers = "0123456789";
+var UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var LowerCase = "abcdefghijklmnopqrstuvwxyz";
+var Character = "@%+/ '!#$^?:,)(}{][~-_.";
+var optionsVariable = "";
 
-
-
-function generatePassword(){
-
-
-    enter = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"));
-    
-    if (!enter) {
-        alert("This needs a value");
-        return 'Try Again'
-
-    } 
-    else if (enter < 8 || enter > 128) 
-        enter = parseInt(prompt("You must choose between 8 and 128"));
-    
-        confirmCharacter = confirm("Will this contain special characters?");
-        confirmUppercase = confirm("Will this contain Uppercase letters?");
-        confirmLowercase = confirm("Will this contain Lowercase letters?");
-
-
-
-        var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        var UpperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-        var LowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-        var character = ['@', '%', '+', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'
-        ];
-
-        var password = Math.floor(Math.random()* password.length)
-
-        
-
-     return password ; 
-     
-     
-}
-
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatepassword);
+
+
+function generatepassword(){
+
+event.preventDefault();
+
+password.value === "";
+var randomstring = "";
+
+
+
+  var passwordLength = prompt("How many characters would you like your password? Choose between 8 and 128");
+  var Character = confirm("Will this contain special characters?");
+  var UpperCase = confirm("Will this contain Uppercase letters?");
+  var LowerCase = confirm("Will this contain Lowercase letters?");
+  var Numbers = confirm("Will this contain numbers?");
+
+
+  if (passwordLength <8 || passwordLength > 128) {
+
+    alert("Must be between 8 and 128. Try again!")
+    var passwordLength = prompt("Must be between 8 and 128 characters!")
+
+  }
+
+  else if (LowerCase === false && Numbers == false && Upercase == false && Character === false) {
+alert("Please choose one for a secure password!");
+
+var Character = confirm("Will this contain special characters?");
+var UpperCase = confirm("Will this contain Uppercase letters?");
+var LowerCase = confirm("Will this contain Lowercase letters?");
+var Numbers = confirm("Will this contain numbers?");
+
+  }
+
+    
+    if (Lowercase) {
+      optionsVariable += LowerCase;
+  }
+
+  if (Uppercase) {
+      optionsVariable += UpperCase;
+  }
+
+  if (Numbers) {
+      optionsVariable += Numbers;
+  }
+
+  if (Character) {
+      optionsVariable += Character;
+  }
+
+
+  for (var i = 0; i < passwordLength; i++) {
+    
+      randomstring += optionsVariable.charAt(Math.floor(Math.random() * optionsVariable.length));
+  }
+  password.value = randomstring;
+
+  return 'password'
+
+   
+}
