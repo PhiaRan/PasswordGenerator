@@ -1,21 +1,27 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
 
-
-var Numbers = "0123456789";
-var UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var LowerCase = "abcdefghijklmnopqrstuvwxyz";
-var Character = "@%+/ '!#$^?:,)(}{][~-_.";
+var NumberOptions = "0123456789";
+var UpperOptions = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var LowerOptions = "abcdefghijklmnopqrstuvwxyz";
+var CharOptions = "@%+/ '!#$^?:,)(}{][~-_.";
 var Usernumber = "";
 
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", generatepassword);
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
 
 
-function generatepassword(){
+function generatePassword(){
 
-
+var finalpassword = ""
   var passwordLength = prompt("How many characters would you like your password? Choose between 8 and 128");
   var Character = confirm("Will this contain special characters?");
   var UpperCase = confirm("Will this contain Uppercase letters?");
@@ -41,20 +47,20 @@ var Numbers = confirm("Will this contain numbers?");
   }
 
     
-    if (Lowercase) {
-      Usernumber  += LowerCase;
+    if (LowerCase) {
+      Usernumber  += LowerOptions;
   }
 
-  if (Uppercase) {
-    Usernumber  += UpperCase;
+  if (UpperCase) {
+    Usernumber  += UpperOptions;
   }
 
   if (Numbers) {
-    Usernumber += Numbers;
+    Usernumber += NumberOptions;
   }
 
   if (Character) {
-      Usernumber += Character;
+      Usernumber += CharOptions;
   }
 
 
@@ -63,11 +69,9 @@ var Numbers = confirm("Will this contain numbers?");
       finalpassword += Usernumber.charAt(Math.floor(Math.random() * Usernumber.length));
   }
 
-  password.value = finalpassword;
-
 return finalpassword  
 
    
 }
 
-var password = document.querySelector("#password");
+generateBtn.addEventListener("click", writePassword);
